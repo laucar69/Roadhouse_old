@@ -26,6 +26,7 @@ $(function () {
     closePanel();
   });
 
+  setupBackToTop();
   setupContactForm();
 });
 
@@ -41,6 +42,26 @@ function closePanel() {
   if (collapseInstance) {
     collapseInstance.hide();
   }
+}
+
+function setupBackToTop() {
+  var $backToTop = $(".back-to-top-layer");
+
+  if (!$backToTop.length) {
+    return;
+  }
+
+  function updateBackToTopVisibility() {
+    if ($(window).scrollTop() > 260) {
+      $backToTop.addClass("is-visible");
+      return;
+    }
+
+    $backToTop.removeClass("is-visible");
+  }
+
+  $(window).on("scroll", updateBackToTopVisibility);
+  updateBackToTopVisibility();
 }
 
 function setupContactForm() {

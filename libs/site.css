@@ -221,6 +221,55 @@ footer {
 	padding-bottom: 50px;
 }
 
+.back-to-top-layer {
+    position: fixed;
+    right: 0;
+    bottom: 20px;
+    left: 0;
+    z-index: 1030;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 180ms ease, visibility 180ms ease;
+}
+
+.back-to-top-layer.is-visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top-slot {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.back-to-top {
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+    pointer-events: auto;
+}
+
+.back-to-top:hover,
+.back-to-top:focus {
+    color: #fff;
+    text-decoration: none;
+    background-color: rgba(60, 60, 60, 0.92);
+}
+
+.back-to-top-arrow {
+    font-size: 0.8rem;
+    line-height: 1;
+}
+
 .aLittleSpace {
 	margin-bottom: 20px;
 }
@@ -296,4 +345,11 @@ img.smlogo {
 .aLittleTopSpaceAndCenter{
 	padding-top: 80px;
 	text-align: center
+}
+
+@media (max-width: 767.98px) {
+    .back-to-top {
+        padding: 7px 10px;
+        font-size: 0.78rem;
+    }
 }
