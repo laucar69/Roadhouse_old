@@ -82,7 +82,6 @@ ul.news {
 /******************** Nav - Bar ***************************/
 .navbar {
     margin-bottom: 0;
-    
     z-index: 9999;
     border: 0;
     font-size: 12px !important;
@@ -97,23 +96,21 @@ ul.news {
     background: linear-gradient(#000, #555); /* Standard syntax */
 }
 
-.navbar li a, .navbar .navbar-brand {
+.navbar .nav-link, .navbar .navbar-brand {
     color: #fff !important;
 }
 
-.navbar-nav li a:hover, .navbar-nav li.active a {
+.navbar-nav .nav-link:hover, .navbar-nav .nav-link.active {
     color: #fff !important;
     background-color: #555 !important;
 }
 
-.navbar-default .navbar-toggle {
+.navbar-toggler {
     border-color: transparent;
     color: #fff !important;
 }
-
-
-img.logoscript {    
-    margin-top: -8px;
+.navbar-toggler:focus {
+    box-shadow: none;
 }
 
 p.subheader {
@@ -184,6 +181,10 @@ img.content-image-small {
 	color: lightgray;
 }
 
+.invalid-feedback {
+    display: block;
+}
+
 p.hint {
     font-style: italic;
     font-size: small;
@@ -207,10 +208,11 @@ form#contact_form {
 
 
 /**********************  Footer ************************************/
-footer .glyphicon {
+footer .footer-chevron {
     font-size: 20px;
     margin-bottom: 20px;
     color: #fff;
+    display: inline-block;
 }
 
 footer {
@@ -241,40 +243,27 @@ textarea.form-control {
     border-color: gray;
 }
 
-.has-error .checkbox, .has-error .checkbox-inline, .has-error .control-label, .has-error .help-block, .has-error .radio, .has-error .radio-inline, .has-error.checkbox label, .has-error.checkbox-inline label, .has-error.radio label, .has-error.radio-inline label {
+.is-invalid,
+.is-invalid:focus {
+    border-color: red;
+}
+
+.is-invalid ~ .invalid-feedback,
+.is-invalid + .invalid-feedback {
     color: red;
 }
 
-.btn-warning:hover {
+.btn-warning:hover,
+.btn-warning:focus,
+.btn-warning:active {
 	color: #fff;
 	background-color: red;
 	border-color: red;
 }
 
-.btn-warning.active, .btn-warning:active, .open>.dropdown-toggle.btn-warning {
-	color: #fff;
-	background-color: red;
-	border-color: red;
-}
-
-.btn-warning.active.focus, .btn-warning.active:focus, .btn-warning.active:hover, .btn-warning:active.focus, .btn-warning:active:focus, .btn-warning:active:hover, .open>.dropdown-toggle.btn-warning.focus, .open>.dropdown-toggle.btn-warning:focus, .open>.dropdown-toggle.btn-warning:hover {
-	color: #fff;
-	background-color: red;
-	border-color: red;
-}
-
-.carousel-inner>.item img {
+.carousel-item img {
 	margin: 0 auto;
 }
-
-.carousel-control .glyphicon-chevron-left {
-	left: 10%;
-}
-.carousel-control .glyphicon-chevron-right {
-	right: 10%;
-}
-
-
 
 img.withText {
     padding-bottom: 10px;

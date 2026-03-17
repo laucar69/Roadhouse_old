@@ -1,112 +1,146 @@
-$(document).ready(function(){
-  // Add smooth scrolling to all links in navbar + footer link
-  $(".navbar a, a.internal").on('click', function(event) {
+$(function () {
+  $(".navbar a, a.internal").on("click", function (event) {
+    if (!this.hash) {
+      return;
+    }
 
-   // Make sure this.hash has a value before overriding default behavior
-  if (this.hash !== "") {
+    var hash = this.hash;
+    var $target = $(hash);
 
-    // Prevent default anchor click behavior
+    if (!$target.length) {
+      return;
+    }
+
     event.preventDefault();
 
-    // Store hash
-    var hash = this.hash;
+    $("html, body").animate(
+      {
+        scrollTop: $target.offset().top
+      },
+      900,
+      function () {
+        window.location.hash = hash;
+      }
+    );
 
-    // Using jQuery's animate() method to add smooth page scroll
-    // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
-    $('html, body').animate({
-      scrollTop: $(hash).offset().top
-    }, 900, function(){
+    closePanel();
+  });
 
-      // Add hash (#) to URL when done scrolling (default click behavior)
-      window.location.hash = hash;
-      });
-    } 
-	closePanel();
-})
-})
+  setupContactForm();
+});
 
-function closePanel(){
-	$('.navbar-header button').attr('aria-expanded','false');
-	$('.navbar-header button').addClass('collapsed');
+function closePanel() {
+  var collapseElement = document.getElementById("myNavbar");
 
-	$('.navbar-collapse').removeClass('in');
-	$('.navbar-collapse').attr('aria-expanded','false');
+  if (!collapseElement || typeof bootstrap === "undefined") {
+    return;
+  }
 
+  var collapseInstance = bootstrap.Collapse.getInstance(collapseElement);
 
+  if (collapseInstance) {
+    collapseInstance.hide();
+  }
 }
 
+function setupContactForm() {
+  var $form = $("#contact_form");
+  var $success = $("#success_message");
 
-$(document).ready(function() {
-	
-	$('.form-group button').click(function(){
-		$('#contact_form').attr('action',$('#contact_form').attr('action') + "?chck=js");
-	})
+  if (!$form.length) {
+    return;
+  }
 
-    $('#contact_form').bootstrapValidator({
-        // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            name: {
-                validators: {
-                        stringLength: {
-                        min: 2,
-                    },
-                        notEmpty: {
-                        message: 'Bitte gib deinen Namen an'
-                    }
-                }
-            },             
-            mailfrom: {
-                validators: {
-                    notEmpty: {
-                        message: 'Bitte trage deine eMail Adresse ein'
-                    },
-                    emailAddress: {
-                        message: 'Bitte trage eine richtige eMail Adresse ein'
-                    }
-                }
-            },
-			subject: {
-                validators: {
-                    notEmpty: {
-                        message: 'Bitte trage einen kurzen Betreff ein'
-                    }
-                }
-            },
-            comment: {
-                validators: {
-                      stringLength: {
-                        min: 10,
-                        max: 300,
-                        message:'Bitte schreibe mindestens 10 Zeichen und nicht mehr als 200'
-                    },
-                    notEmpty: {
-                        message: 'Bitte trage deine Mitteilung ein'
-                    }
-                    }
-                }
-            }
-        })
-        .on('success.form.bv', function(e) {
-            $('#success_message').slideDown({ opacity: "show" }, "slow") // Do something ...
-                $('#contact_form').data('bootstrapValidator').resetForm();
+  var fieldMessages = {
+    name: {
+      valueMissing: "Bitte gib deinen Namen an",
+      tooShort: "Bitte gib mindestens 2 Zeichen ein"
+    },
+    mailfrom: {
+      valueMissing: "Bitte trage deine eMail Adresse ein",
+      typeMismatch: "Bitte trage eine richtige eMail Adresse ein"
+    },
+    subject: {
+      valueMissing: "Bitte trage einen kurzen Betreff ein"
+    },
+    comment: {
+      valueMissing: "Bitte trage deine Mitteilung ein",
+      tooShort: "Bitte schreibe mindestens 10 Zeichen",
+      tooLong: "Bitte schreibe nicht mehr als 300 Zeichen"
+    }
+  };
 
-            // Prevent form submission
-            e.preventDefault();
+  function getValidationMessage(field) {
+    var messages = fieldMessages[field.name] || {};
+    var validity = field.validity;
 
-            // Get the form instance
-            var $form = $(e.target);
+    if (validity.valueMissing) {
+      return messages.valueMissing || "Bitte fülle dieses Feld aus";
+    }
 
-            // Get the BootstrapValidator instance
-            var bv = $form.data('bootstrapValidator');
+    if (validity.typeMismatch) {
+      return messages.typeMismatch || "Bitte prüfe dieses Feld";
+    }
 
-            // Use Ajax to submit form data
-            $.post($form.attr('action'), $form.serialize(), function(result) {
-                console.log(result);
-            }, 'json');
-        });
-});
+    if (validity.tooShort) {
+      return messages.tooShort || "Bitte gib mehr Zeichen ein";
+    }
+
+    if (validity.tooLong) {
+      return messages.tooLong || "Bitte gib weniger Zeichen ein";
+    }
+
+    return "";
+  }
+
+  function setFieldState(field) {
+    var $field = $(field);
+    var $feedback = $field.siblings(".invalid-feedback");
+    var isValid = field.checkValidity();
+
+    if (isValid) {
+      $field.removeClass("is-invalid");
+      $feedback.text("");
+      return true;
+    }
+
+    $field.addClass("is-invalid");
+    $feedback.text(getValidationMessage(field));
+    return false;
+  }
+
+  $form.find("input, textarea, select").on("input change blur", function () {
+    setFieldState(this);
+  });
+
+  $form.on("submit", function (event) {
+    event.preventDefault();
+    $success.hide();
+
+    var fields = $form.find("input, textarea, select").toArray();
+    var isFormValid = fields.every(setFieldState);
+
+    if (!isFormValid) {
+      return;
+    }
+
+    var action = $form.attr("action");
+    var requestUrl = action.indexOf("?") === -1 ? action + "?chck=js" : action;
+
+    $.ajax({
+      url: requestUrl,
+      method: "POST",
+      data: $form.serialize(),
+      dataType: "json"
+    })
+      .done(function () {
+        $success.slideDown("slow");
+        $form.trigger("reset");
+        $form.find(".is-invalid").removeClass("is-invalid");
+        $form.find(".invalid-feedback").text("");
+      })
+      .fail(function (xhr, status, error) {
+        console.error("Form submission failed:", status, error);
+      });
+  });
+}
