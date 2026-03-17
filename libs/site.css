@@ -249,7 +249,8 @@ footer {
     align-items: center;
     padding: 8px 12px;
     border: 1px solid rgba(255, 255, 255, 0.55);
-    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 6px;
+    background-color: rgba(0, 0, 0, 0.25);
     color: #fff;
     text-decoration: none;
     text-transform: uppercase;
@@ -262,7 +263,7 @@ footer {
 .back-to-top:focus {
     color: #fff;
     text-decoration: none;
-    background-color: rgba(60, 60, 60, 0.92);
+    background-color: rgba(60, 60, 60, 0.45);
 }
 
 .back-to-top-arrow {
