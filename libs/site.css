@@ -17,8 +17,17 @@ h4,
 p,
 a,
 li,
-.gowhite {
-    font-family: 'Special Elite', coursive;
+.gowhite,
+label,
+button,
+input,
+textarea,
+select,
+.form-control,
+.form-select,
+.btn,
+.col-form-label {
+    font-family: 'Special Elite', cursive;
 }
 
 p,
