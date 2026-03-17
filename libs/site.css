@@ -1,0 +1,310 @@
+body {
+  	padding-top: 50px;
+    background: black; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#000, #555); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#000, #555); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#000, #555); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#000, #555); /* Standard syntax */
+    background-image: url(../img/texture.jpeg);
+    
+}
+
+/******************** Fonts ***************************/
+
+h1, h2, h3, h4, p, a, li, .gowhite {
+	font-family: 'Special Elite',coursive;
+} 
+
+
+p, h1, h2, h3, h4, a, li, .gowhite {
+	color: #fff;
+}
+
+div#start {
+    position: absolute;
+    top: 0;
+}
+
+h2 {
+    margin-bottom: 30px;
+}
+
+.bg-grey p, .bg-grey h1, .bg-grey h2, .bg-grey h3, .bg-grey h4, .bg-grey label, .bg-grey .playlist {
+	color: #ccc;
+}
+
+.content-container a{
+	color: #fff;
+	text-decoration: underline;
+    font-weight: 600;
+}
+.content-container a:hover {
+	color: #ddd;
+}
+
+.content-container.bg-grey a{
+	color: #ccc;
+    text-decoration: underline;
+    font-weight: 600;
+}
+.content-container.bg-grey a:hover {	
+	color: #fff;	
+}
+
+img {
+	max-width: 100%;
+}
+
+
+
+.head .row {
+    margin-bottom: 0;
+}
+
+.content-container.head {
+    padding: 0 0 0 0;
+background-color: #000; 
+}
+
+ul.news {
+    list-style-type: none;
+    padding: 15px 17px 0 0;
+}
+
+.playlist .row {
+    margin-bottom: 5px;
+}
+
+.playlist h3 {
+    padding-top: 5px;
+}
+
+/******************** Nav - Bar ***************************/
+.navbar {
+    margin-bottom: 0;
+    
+    z-index: 9999;
+    border: 0;
+    font-size: 12px !important;
+    line-height: 1.42857143 !important;
+    letter-spacing: 4px;
+    border-radius: 0;
+    
+    background: black; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#000, #555); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#000, #555); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#000, #555); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#000, #555); /* Standard syntax */
+}
+
+.navbar li a, .navbar .navbar-brand {
+    color: #fff !important;
+}
+
+.navbar-nav li a:hover, .navbar-nav li.active a {
+    color: #fff !important;
+    background-color: #555 !important;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+    color: #fff !important;
+}
+
+
+img.logoscript {    
+    margin-top: -8px;
+}
+
+p.subheader {
+    font-size: 1.2em;
+}
+
+h4, h4 {
+    font-style: italic;
+padding-top: 1em;
+}
+
+/***********************************************************/
+
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+.head { 
+    padding: 100px 25px;
+       
+
+}
+
+.content-container {
+    padding: 60px 50px;
+    background-color: #000;    
+}
+.bg-grey {
+    background-color: #444;
+}
+
+
+img.content-image {
+    width: 343px;
+    float: right;
+}
+
+img.content-image-small {
+    width: 100%;
+	padding-bottom: 1.5em;
+}
+
+.playlist {
+    padding-bottom: 0px;
+    padding-left: 10px;    
+    margin-top: 40px;
+}
+
+.center {
+	text-align: center;
+	padding-left: 0;
+}
+
+
+
+/**********************  Galerie ************************************/
+
+/**********************  Kontakt ************************************/
+
+
+#success_message{ 
+	display: none;
+}
+
+.control-label{
+    text-align: left!important;
+	color: lightgray;
+}
+
+p.hint {
+    font-style: italic;
+    font-size: small;
+}
+
+form#contact_form {
+    margin-top: 41px;
+}
+
+.dv-button {
+	background: black; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#0555, #777); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#555, #777); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#555, #777); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#555, #777); /* Standard syntax */
+    border-color: #000;
+}
+
+.dv-button:hover {
+}	
+
+
+/**********************  Footer ************************************/
+footer .glyphicon {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+footer {
+	margin-top: 10px;
+	background-color: #111;
+	padding-bottom: 50px;
+}
+
+.aLittleSpace {
+	margin-bottom: 20px;
+}
+
+textarea.form-control {
+    height: 9em;
+}
+
+.stripe {
+    border-left: 6px double white;
+}
+
+.stripe li {
+    padding-bottom: 1.5em;
+}
+
+.alert-success {
+    color: green;
+    background-color: #fff;
+    border-color: gray;
+}
+
+.has-error .checkbox, .has-error .checkbox-inline, .has-error .control-label, .has-error .help-block, .has-error .radio, .has-error .radio-inline, .has-error.checkbox label, .has-error.checkbox-inline label, .has-error.radio label, .has-error.radio-inline label {
+    color: red;
+}
+
+.btn-warning:hover {
+	color: #fff;
+	background-color: red;
+	border-color: red;
+}
+
+.btn-warning.active, .btn-warning:active, .open>.dropdown-toggle.btn-warning {
+	color: #fff;
+	background-color: red;
+	border-color: red;
+}
+
+.btn-warning.active.focus, .btn-warning.active:focus, .btn-warning.active:hover, .btn-warning:active.focus, .btn-warning:active:focus, .btn-warning:active:hover, .open>.dropdown-toggle.btn-warning.focus, .open>.dropdown-toggle.btn-warning:focus, .open>.dropdown-toggle.btn-warning:hover {
+	color: #fff;
+	background-color: red;
+	border-color: red;
+}
+
+.carousel-inner>.item img {
+	margin: 0 auto;
+}
+
+.carousel-control .glyphicon-chevron-left {
+	left: 10%;
+}
+.carousel-control .glyphicon-chevron-right {
+	right: 10%;
+}
+
+
+
+img.withText {
+    padding-bottom: 10px;
+}
+
+img.smlogo {
+	height: 30px;
+    margin-left: 15px;
+
+}
+
+.responsive-video {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 25px;
+    height: 0;
+}
+.responsive-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#about img {
+	padding-top: 2em;
+}
+
+.aLittleTopSpaceAndCenter{
+	padding-top: 80px;
+	text-align: center
+}
