@@ -1,23 +1,35 @@
 body {
-  	padding-top: 50px;
+    padding-top: 50px;
     background: black; /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(#000, #555); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(#000, #555); /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(#000, #555); /* For Firefox 3.6 to 15 */
     background: linear-gradient(#000, #555); /* Standard syntax */
     background-image: url(../img/texture.jpeg);
-    
 }
 
 /******************** Fonts ***************************/
 
-h1, h2, h3, h4, p, a, li, .gowhite {
-	font-family: 'Special Elite',coursive;
-} 
+h1,
+h2,
+h3,
+h4,
+p,
+a,
+li,
+.gowhite {
+    font-family: 'Special Elite', coursive;
+}
 
-
-p, h1, h2, h3, h4, a, li, .gowhite {
-	color: #fff;
+p,
+h1,
+h2,
+h3,
+h4,
+a,
+li,
+.gowhite {
+    color: #fff;
 }
 
 div#start {
@@ -29,33 +41,37 @@ h2 {
     margin-bottom: 30px;
 }
 
-.bg-grey p, .bg-grey h1, .bg-grey h2, .bg-grey h3, .bg-grey h4, .bg-grey label, .bg-grey .playlist {
-	color: #ccc;
+.bg-grey p,
+.bg-grey h1,
+.bg-grey h2,
+.bg-grey h3,
+.bg-grey h4,
+.bg-grey label,
+.bg-grey .playlist {
+    color: #ccc;
 }
 
-.content-container a{
-	color: #fff;
-	text-decoration: underline;
-    font-weight: 600;
-}
-.content-container a:hover {
-	color: #ddd;
-}
-
-.content-container.bg-grey a{
-	color: #ccc;
+.content-container a {
+    color: #fff;
     text-decoration: underline;
     font-weight: 600;
 }
-.content-container.bg-grey a:hover {	
-	color: #fff;	
+.content-container a:hover {
+    color: #ddd;
+}
+
+.content-container.bg-grey a {
+    color: #ccc;
+    text-decoration: underline;
+    font-weight: 600;
+}
+.content-container.bg-grey a:hover {
+    color: #fff;
 }
 
 img {
-	max-width: 100%;
+    max-width: 100%;
 }
-
-
 
 .head .row {
     margin-bottom: 0;
@@ -63,7 +79,7 @@ img {
 
 .content-container.head {
     padding: 0 0 0 0;
-background-color: #000; 
+    background-color: #000;
 }
 
 ul.news {
@@ -88,7 +104,7 @@ ul.news {
     line-height: 1.42857143 !important;
     letter-spacing: 4px;
     border-radius: 0;
-    
+
     background: black; /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(#000, #555); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(#000, #555); /* For Opera 11.1 to 12.0 */
@@ -96,11 +112,13 @@ ul.news {
     background: linear-gradient(#000, #555); /* Standard syntax */
 }
 
-.navbar .nav-link, .navbar .navbar-brand {
+.navbar .nav-link,
+.navbar .navbar-brand {
     color: #fff !important;
 }
 
-.navbar-nav .nav-link:hover, .navbar-nav .nav-link.active {
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
     color: #fff !important;
     background-color: #555 !important;
 }
@@ -117,32 +135,30 @@ p.subheader {
     font-size: 1.2em;
 }
 
-h4, h4 {
+h4,
+h4 {
     font-style: italic;
-padding-top: 1em;
+    padding-top: 1em;
 }
 
 /***********************************************************/
 
 .starter-template {
-  padding: 40px 15px;
-  text-align: center;
+    padding: 40px 15px;
+    text-align: center;
 }
 
-.head { 
+.head {
     padding: 100px 25px;
-       
-
 }
 
 .content-container {
     padding: 60px 50px;
-    background-color: #000;    
+    background-color: #000;
 }
 .bg-grey {
     background-color: #444;
 }
-
 
 img.content-image {
     width: 343px;
@@ -151,34 +167,31 @@ img.content-image {
 
 img.content-image-small {
     width: 100%;
-	padding-bottom: 1.5em;
+    padding-bottom: 1.5em;
 }
 
 .playlist {
     padding-bottom: 0px;
-    padding-left: 10px;    
+    padding-left: 10px;
     margin-top: 40px;
 }
 
 .center {
-	text-align: center;
-	padding-left: 0;
+    text-align: center;
+    padding-left: 0;
 }
-
-
 
 /**********************  Galerie ************************************/
 
 /**********************  Kontakt ************************************/
 
-
-#success_message{ 
-	display: none;
+#success_message {
+    display: none;
 }
 
-.control-label{
-    text-align: left!important;
-	color: lightgray;
+.control-label {
+    text-align: left !important;
+    color: lightgray;
 }
 
 .invalid-feedback {
@@ -195,8 +208,11 @@ form#contact_form {
 }
 
 .dv-button {
-	background: black; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(#0555, #777); /* For Safari 5.1 to 6.0 */
+    background: black; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(
+        #0555,
+        #777
+    ); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(#555, #777); /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(#555, #777); /* For Firefox 3.6 to 15 */
     background: linear-gradient(#555, #777); /* Standard syntax */
@@ -204,8 +220,7 @@ form#contact_form {
 }
 
 .dv-button:hover {
-}	
-
+}
 
 /**********************  Footer ************************************/
 footer .footer-chevron {
@@ -216,9 +231,9 @@ footer .footer-chevron {
 }
 
 footer {
-	margin-top: 10px;
-	background-color: #111;
-	padding-bottom: 50px;
+    margin-top: 10px;
+    background-color: #111;
+    padding-bottom: 50px;
 }
 
 .back-to-top-layer {
@@ -230,7 +245,9 @@ footer {
     pointer-events: none;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 180ms ease, visibility 180ms ease;
+    transition:
+        opacity 180ms ease,
+        visibility 180ms ease;
 }
 
 .back-to-top-layer.is-visible {
@@ -247,7 +264,7 @@ footer {
     display: inline-flex;
     gap: 8px;
     align-items: center;
-    padding: 8px 12px;
+    padding: 8px 12px 4px;
     border: 1px solid rgba(255, 255, 255, 0.55);
     border-radius: 6px;
     background-color: rgba(0, 0, 0, 0.25);
@@ -272,7 +289,7 @@ footer {
 }
 
 .aLittleSpace {
-	margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 textarea.form-control {
@@ -306,13 +323,13 @@ textarea.form-control {
 .btn-warning:hover,
 .btn-warning:focus,
 .btn-warning:active {
-	color: #fff;
-	background-color: red;
-	border-color: red;
+    color: #fff;
+    background-color: red;
+    border-color: red;
 }
 
 .carousel-item img {
-	margin: 0 auto;
+    margin: 0 auto;
 }
 
 img.withText {
@@ -320,9 +337,8 @@ img.withText {
 }
 
 img.smlogo {
-	height: 30px;
+    height: 30px;
     margin-left: 15px;
-
 }
 
 .responsive-video {
@@ -340,12 +356,12 @@ img.smlogo {
 }
 
 #about img {
-	padding-top: 2em;
+    padding-top: 2em;
 }
 
-.aLittleTopSpaceAndCenter{
-	padding-top: 80px;
-	text-align: center
+.aLittleTopSpaceAndCenter {
+    padding-top: 80px;
+    text-align: center;
 }
 
 @media (max-width: 767.98px) {
