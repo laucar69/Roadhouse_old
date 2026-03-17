@@ -298,6 +298,7 @@ textarea.form-control {
 
 .stripe {
     border-left: 6px double white;
+    margin-top: 20px;
 }
 
 .stripe li {

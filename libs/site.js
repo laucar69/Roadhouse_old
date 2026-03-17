@@ -1,10 +1,17 @@
 $(function () {
+  setupSmoothScrolling();
+  setupBackToTop();
+  setupContactForm();
+});
+
+function setupSmoothScrolling() {
   $(".navbar a, a.internal").on("click", function (event) {
-    if (!this.hash) {
+    var hash = this.hash;
+
+    if (!hash) {
       return;
     }
 
-    var hash = this.hash;
     var $target = $(hash);
 
     if (!$target.length) {
@@ -25,48 +32,46 @@ $(function () {
 
     closePanel();
   });
-
-  setupBackToTop();
-  setupContactForm();
-});
+}
 
 function closePanel() {
-  var collapseElement = document.getElementById("myNavbar");
-
-  if (!collapseElement || typeof bootstrap === "undefined") {
+  if (typeof bootstrap === "undefined") {
     return;
   }
 
-  var collapseInstance = bootstrap.Collapse.getInstance(collapseElement);
+  var collapseElement = document.getElementById("myNavbar");
 
-  if (collapseInstance) {
-    collapseInstance.hide();
+  if (!collapseElement) {
+    return;
   }
+
+  var collapseInstance =
+    bootstrap.Collapse.getInstance(collapseElement) ||
+    new bootstrap.Collapse(collapseElement, { toggle: false });
+
+  collapseInstance.hide();
 }
 
 function setupBackToTop() {
+  var $window = $(window);
   var $backToTop = $(".back-to-top-layer");
 
   if (!$backToTop.length) {
     return;
   }
 
-  function updateBackToTopVisibility() {
-    if ($(window).scrollTop() > 260) {
-      $backToTop.addClass("is-visible");
-      return;
-    }
-
-    $backToTop.removeClass("is-visible");
+  function updateVisibility() {
+    $backToTop.toggleClass("is-visible", $window.scrollTop() > 260);
   }
 
-  $(window).on("scroll", updateBackToTopVisibility);
-  updateBackToTopVisibility();
+  $window.on("scroll", updateVisibility);
+  updateVisibility();
 }
 
 function setupContactForm() {
   var $form = $("#contact_form");
   var $success = $("#success_message");
+  var $fields = $form.find("input, textarea, select");
 
   if (!$form.length) {
     return;
@@ -119,18 +124,26 @@ function setupContactForm() {
     var $feedback = $field.siblings(".invalid-feedback");
     var isValid = field.checkValidity();
 
-    if (isValid) {
-      $field.removeClass("is-invalid");
-      $feedback.text("");
-      return true;
-    }
+    $field.toggleClass("is-invalid", !isValid);
+    $feedback.text(isValid ? "" : getValidationMessage(field));
 
-    $field.addClass("is-invalid");
-    $feedback.text(getValidationMessage(field));
-    return false;
+    return isValid;
   }
 
-  $form.find("input, textarea, select").on("input change blur", function () {
+  function resetValidationState() {
+    $fields.removeClass("is-invalid");
+    $form.find(".invalid-feedback").text("");
+  }
+
+  function buildRequestUrl(action) {
+    if (!action) {
+      return "";
+    }
+
+    return action + (action.indexOf("?") === -1 ? "?chck=js" : "&chck=js");
+  }
+
+  $fields.on("input change blur", function () {
     setFieldState(this);
   });
 
@@ -138,18 +151,14 @@ function setupContactForm() {
     event.preventDefault();
     $success.hide();
 
-    var fields = $form.find("input, textarea, select").toArray();
-    var isFormValid = fields.every(setFieldState);
+    var isFormValid = $fields.toArray().every(setFieldState);
 
     if (!isFormValid) {
       return;
     }
 
-    var action = $form.attr("action");
-    var requestUrl = action.indexOf("?") === -1 ? action + "?chck=js" : action;
-
     $.ajax({
-      url: requestUrl,
+      url: buildRequestUrl($form.attr("action")),
       method: "POST",
       data: $form.serialize(),
       dataType: "json"
@@ -157,8 +166,7 @@ function setupContactForm() {
       .done(function () {
         $success.slideDown("slow");
         $form.trigger("reset");
-        $form.find(".is-invalid").removeClass("is-invalid");
-        $form.find(".invalid-feedback").text("");
+        resetValidationState();
       })
       .fail(function (xhr, status, error) {
         console.error("Form submission failed:", status, error);
